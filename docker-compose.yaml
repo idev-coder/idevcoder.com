@@ -1,0 +1,19 @@
+version: '3' # vs mais atual
+
+services:
+  app:
+    build: ./
+    container_name: idevcoder.com
+    restart: always
+    tty: true
+    working_dir: /idevcoder.com
+    volumes:
+      - ./:/idevcoder.com
+    ports:
+      - "3100:80"
+    networks:
+      - idevcoder-network
+
+networks:
+  idevcoder-network:
+    driver: host
