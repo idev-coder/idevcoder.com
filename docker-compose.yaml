@@ -1,4 +1,4 @@
-version: '3' # vs mais atual
+version: '3.8' # vs mais atual
 
 services:
   app:
@@ -8,11 +8,21 @@ services:
     tty: true
     working_dir: /idevcoder.com
     volumes:
-      - ./:/idevcoder.com
-    ports:
-      - "3100:80"
+      - ./app/:/idevcoder.com
+    # ports:
+    #   - "3000:3000"
     networks:
       - idevcoder-network
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+    ports:
+      - "80:80"
+    networks:
+      - idevcoder-network
+    depends_on:
+      - app
 
 networks:
   idevcoder-network:
