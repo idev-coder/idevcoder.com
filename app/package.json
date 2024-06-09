@@ -13,7 +13,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start":"serve -s build",
+    "start:dev":"serve -s build",
+    "start":"serve -s build --ssl-key ./privkey.pem --ssl-cert ./fullchain.pem",
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
